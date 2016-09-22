@@ -1,5 +1,3 @@
-# short.js
+# This is the [website](https://shoort.github.io/short.js) source for [short.js](https://github.com/shoort/short.js).
 
-short.js is a javascript library full of fancy extra stuff!
-
-https://shortjs.github.io
+Yeah. You should probably go there.

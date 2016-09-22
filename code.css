@@ -1,0 +1,30 @@
+@font-face {
+  src: url(https://cdn.rawgit.com/tonsky/FiraCode/master/distr/ttf/FiraCode-Regular.ttf);
+  font-family: 'FiraCode';
+}
+pre code {
+  display: block;
+  background: #222;
+  padding: 1em 1em 1em 8em;
+  border-radius: 0 1em 1em 0;
+  color: #fff;
+  font-family: 'FiraCode', monospace;
+  width: calc(100% + 17em);
+  margin-left: -8em;
+}
+.hljs-keyword, .hljs-literal {
+  color: #da96f7;
+}
+.hljs-string {
+  color: #9eeca1;
+}
+.hljs-comment {
+  color: #ccc;
+  font-style: italic;
+}
+.hljs-attr {
+  color: #f37777;
+}
+.hljs-number {
+  color: #8fc8f3;
+}
