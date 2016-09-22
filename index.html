@@ -26,51 +26,46 @@
     </p>
     <h2>I/O Made Easy</h2>
     <pre><code>// Less typing, more printing!
-io.log('Hello, world!');
-io.warn('Something might be up! Be wary!');
-io.error('I was right! Something is wrong!');
+io.l('Hello, world!'); // or io.log
+io.w('Something might be up! Be wary!'); // or io.warn
+io.e('I was right! Something is wrong!'); // or io.error
 
 // Some stuff is only useful to developers.
 // Hide it in production by removing one line!
-io.debug('This will not be logged!');
-io.debug(true);
-io.debug('This will be logged!');
+io.d('This will not be logged!'); // or io.debug
+io.d(true);
+io.d('This will be logged!');
 
 // Alerts an&shy;d prompts and confirms - oh my!
-io.alert('Hello, there! Sorry to interrupt!');
-var love = io.confirm('Do you love me?');
-var card = io.prompt('Pick a card!');
+io.a('Hello, there! Sorry to interrupt!'); // or io.alert
+var love = io.c('Do you love me?'); // or io.confirm
+var card = io.prompt('Pick a card!'); // or io.prompt
 
 // Web requests are a piece of cake!
-io.get('/foo.json', function (res) {
-  io.log('HTTP Status: ' + res.status);
-  io.log('Response Text: ' + res.text);
-  io.log('Response JSON: ' + res.json);
+io.http('/foo.json', function (res) {
+  if (res.status === 200)
+    io.log(res.json);
+  else
+    io.error("It didn't load!");
 });
 </code></pre>
     <h2>DOM is No Longer Dumb</h2>
     <pre><code>// Quickly find elements with a shorthand for querySelector!
-var logger = dom.qs('#logger');
+var logger = dom.q('#logger'); // or dom.query
 
 // Bind events to functions easily!
 logger.click(io.log, 'You clicked the logger!');
 
 // Remember when it took work to hide and show things?
-// Now you can toggle classes easily!
+// Now you can toggle display states (default is 'block') easily!
 var switch = dom.qs('#switch');
 var box = dom.qs('#box');
-switch.click(box.classes.toggle, 'show');
+switch.click(box.toggle);
 </code></pre>
 
     <h2>Iteration for All</h2>
-    <pre><code>// Now, you can iterate through element lists!
-var links = dom.qsa('a');
-
-links.each(function (link) {
-  link.click(void);
-});
-
-// Iterate through objects, too!
+    <pre><code>
+// Iterate through objects with ease!
 var toppings = {
   tomato: true,
   anchovies: false,
@@ -79,7 +74,7 @@ var toppings = {
 
 io.log('I want a large pizza please...');
 
-toppings.each(function (key, value) {
+toppings.eachKey(function (key, value) {
   io.log((value ? 'With extra ' : 'Hold the ') + key);
 });
 
