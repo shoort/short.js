@@ -3,6 +3,44 @@ short.js, a JS library by shoort: shoort.github.io
 Copyright (C) 2016 shoort, licensed under the MIT License.
 See https://shoort.github.io/short.js for information.
 */
+var dom = {};
+
+
+// DOM Function Shortcuts
+
+// dom.query / dom.q - document.querySelector alias.
+dom.query = dom.q = document.querySelector;
+
+
+// Element Polyfills
+
+// HTMLElement.click - HTMLElement.onclick binding alias.
+// Allows additional arguments to be specified as arguments to be used.
+HTMLElement.prototype.click = function (callback) {
+  this.onclick = function () {
+    callback.apply(this, arguments.slice(1));
+  };
+};
+
+// HTMLElement.toggle - Toggles display: block on an element.
+HTMLElement.prototype.toggle = function () {
+  this.style.display = this.style.display === 'block' ? 'none' : 'block';
+};
+
+// HTMLElement.toggleFlex - Toggles display: flex on an element.
+HTMLElement.prototype.toggleFlex = function () {
+  this.style.display = this.style.display === 'flex' ? 'none' : 'flex';
+};
+
+// HTMLElement.toggleInline - Toggles display: inline on an element.
+HTMLElement.prototype.toggleInline = function () {
+  this.style.display = this.style.display === 'inline' ? 'none' : 'inline';
+};
+
+// HTMLElement.toggleInlineBlock - Toggles display: inline-block on an element.
+HTMLElement.prototype.toggleInlineBlock = function () {
+  this.style.display = this.style.display === 'inline-block' ? 'none' : 'inline-block';
+};
 var io = {};
 
 
@@ -118,4 +156,27 @@ io.http = io.h = function (type, url, a, b) {
 
   // Sends, including POST data.
   xhr.send(options.data);
+};
+
+// Array.each - Array.forEach alias.
+Array.prototype.each = Array.prototype.forEach;
+
+// Object.eachKey - Iterates over key/value pairs.
+Object.prototype.eachKey = function (cb) {
+  var k = Object.keys(this);
+  for (var i = 0; i < k.length; i++)
+    cb(k[i], this[k[i]]);
+};
+
+// times - Runs cb() n times.
+var times = function (n, cb) {
+  for (var i = 0; i < n; i++) cb(n);
+};
+
+// Array.range - for a 2-item array, creates an array of numbers in that range.
+Array.prototype.range = function () {
+  var ar = [];
+  for (var i = this[0]; i <= this[1]; i++)
+    ar.push(i);
+  return ar;
 };
